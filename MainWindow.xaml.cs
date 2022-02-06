@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace WPF_SQL
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            DoubleAnimation WA = new DoubleAnimation(); // создание объекта для настройки анимации
+
+            WA.From = 100; // начальное значение свойства
+
+            WA.To = 150; // конечное значение свойства
+
+            WA.Duration = TimeSpan.FromSeconds(2); // продолжительность анимации (в секундах)
+
+            WA.RepeatBehavior = RepeatBehavior.Forever; // бесконечность анимации
+
+            WA.AutoReverse = true; // воспроизведение временной шкалы в обратном порядке
+
+            Bsing_in.BeginAnimation(WidthProperty, WA); // «навешивание» анимации на свойство ширины кнопки
+            Breg.BeginAnimation(WidthProperty, WA);
+            Const.frame = Fmain;
+            Const.BD = new Entities1();
+            Fmain.Navigate(new Image()); // Данные для входа в файл Пароли.txt
+            //Fmain.Navigate(new OrderTable());
+        }
+
+        private void Bsing_in_Click(object sender, RoutedEventArgs e)
+        {
+            Fmain.Navigate(new Auto());
+        }
+
+        private void Breg_Click(object sender, RoutedEventArgs e)
+        {
+            Fmain.Navigate(new Reg());
+        }
+    }
+}
